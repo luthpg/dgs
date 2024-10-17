@@ -16,17 +16,17 @@ declare namespace GoogleAppsScript {
           function push<T extends object, K extends object>(
             stateObject: T,
             params: K,
-            hash: string
+            hash: string,
           ): void;
           /** Replaces the top event on the browser history stack with the provided state object, URL parameters and URL fragment. */
           function replacer<T extends object, K extends object>(
             stateObject: T,
             params: K,
-            hash: string
+            hash: string,
           ): void;
           /** Sets a callback function to respond to changes in the browser history */
           function setChangeHandler<T extends object>(
-            callback: (e: { state: T; location: Location }) => void
+            callback: (e: { state: T; location: Location }) => void,
           ): void;
         }
 
@@ -48,15 +48,15 @@ declare namespace GoogleAppsScript {
         const run: Record<string, Function> & {
           /** Sets a callback function to run if the server-side function throws an exception. */
           withFailureHandler<K>(
-            callback: (error: Error, userObject?: K) => void
+            callback: (error: Error, userObject?: K) => void,
           ): typeof GoogleAppsScript.HTML.GlobalGoogle.script.run;
           /** Sets a callback function to run if the server-side function returns successfully. */
           withSuccessHandler<T, K>(
-            callback: (returnValue: T, userObject?: K) => void
+            callback: (returnValue: T, userObject?: K) => void,
           ): typeof GoogleAppsScript.HTML.GlobalGoogle.script.run;
           /** Sets a callback function to run if the server-side function returns successfully. */
           withUserObject<K>(
-            userObject?: K
+            userObject?: K,
           ): typeof GoogleAppsScript.HTML.GlobalGoogle.script.run;
         };
 

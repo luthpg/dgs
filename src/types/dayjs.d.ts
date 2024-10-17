@@ -1,14 +1,14 @@
 /// <reference types="@types/google-apps-script" />
 
 declare namespace GoogleAppsScript {
-	namespace Libraries {
-		/**
-		 * For GoogleAppsScript Library `DayJS`
-		 * default locale is set `ja`
-		 * @scriptId `1ShsRhHc8tgPy5wGOzUvgEhOedJUQD53m-gd8lG2MOgs-dXC_aCZn9lFB`
-		 * @version based on [cdn dayjs@1.9.3](https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.3/dayjs.min.js)
-		 */
-		namespace dayjs {
+  namespace Libraries {
+    /**
+     * For GoogleAppsScript Library `DayJS`
+     * default locale is set `ja`
+     * @scriptId `1ShsRhHc8tgPy5wGOzUvgEhOedJUQD53m-gd8lG2MOgs-dXC_aCZn9lFB`
+     * @version based on [cdn dayjs@1.9.3](https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.9.3/dayjs.min.js)
+     */
+    namespace dayjs {
       namespace dayjs {
         export type ConfigType = string | number | Date | Dayjs;
 
@@ -17,20 +17,20 @@ declare namespace GoogleAppsScript {
           | string
           | string[];
 
-        type UnitTypeShort = "d" | "M" | "y" | "h" | "m" | "s" | "ms";
+        type UnitTypeShort = 'd' | 'M' | 'y' | 'h' | 'm' | 's' | 'ms';
         export type UnitType =
-          | "millisecond"
-          | "second"
-          | "minute"
-          | "hour"
-          | "day"
-          | "month"
-          | "year"
-          | "date"
+          | 'millisecond'
+          | 'second'
+          | 'minute'
+          | 'hour'
+          | 'day'
+          | 'month'
+          | 'year'
+          | 'date'
           | UnitTypeShort;
 
-        export type OpUnitType = UnitType | "week" | "w";
-        export type QUnitType = UnitType | "quarter" | "Q";
+        export type OpUnitType = UnitType | 'week' | 'w';
+        export type QUnitType = UnitType | 'quarter' | 'Q';
 
         export interface ILocale {
           name: string;
@@ -138,8 +138,8 @@ declare namespace GoogleAppsScript {
       }
 
       function dayjs(): dayjs.Dayjs;
-		}
-	}
+    }
+  }
 }
 
 declare const dayjs: typeof GoogleAppsScript.Libraries.dayjs;

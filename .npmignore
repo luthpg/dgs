@@ -1,0 +1,8 @@
+/node_modules
+/src
+/tests
+/playgrounds
+tsconfig.json
+biome.json
+pnpm-lock.yaml
+.template.d.ts
