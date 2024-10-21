@@ -45,7 +45,10 @@ declare namespace GoogleAppsScript {
         }
 
         /** asynchronous client-side JavaScript API available in HTML-service pages that can call server-side Apps Script functions. */
-        const run: Record<string, Function> & {
+        const run: Record<
+          string,
+          /* biome-ignore lint/complexity/noBannedTypes: Client-side can NOT get Server-side scripts types */ Function
+        > & {
           /** Sets a callback function to run if the server-side function throws an exception. */
           withFailureHandler<K>(
             callback: (error: Error, userObject?: K) => void,
