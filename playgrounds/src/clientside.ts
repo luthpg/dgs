@@ -1,5 +1,6 @@
-/// <reference types="./../../src/types/clientSideGoogle.d.ts" />
+/// <reference types="dgs/dist/types/clientSideGoogle.d.ts" />
 
+// this 'dayjs' is a client side library, so it's not effected by 'src/types/dayjs.d.ts' what is a server side library
 import dayjs from 'dayjs';
 import timezone from 'dayjs/plugin/timezone';
 import utc from 'dayjs/plugin/utc';

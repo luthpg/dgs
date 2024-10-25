@@ -2,6 +2,7 @@
 /src
 /tests
 /playgrounds
+*.config.ts
 tsconfig.json
 biome.json
 pnpm-lock.yaml
