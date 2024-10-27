@@ -1,17 +1,32 @@
 {
   "name": "dgs",
   "version": "0.1.0",
-  "description": "definitely typed Google Apps Script library manager",
+  "description": "definitely type support for local development with Google Apps Script library",
   "main": "dist/cli/index.mjs",
+  "types": "dist/cli/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/cli/index.d.ts",
+      "import": "./dist/cli/index.mjs",
+      "require": "./dist/cli/index.cjs"
+    }
+  },
   "scripts": {
     "build": "unbuild",
     "prepack": "unbuild",
+    "dgs": "jiti ./src/cli/bin",
     "lint": "biome lint --write src tests playgrounds",
     "format": "biome format --write src tests playgrounds",
-    "fix": "biome check --write src tests playgrounds"
+    "fix": "biome check --write src tests playgrounds",
+    "test": "vitest run",
+    "prepare": "pnpm run fix && pnpm run test && pnpm run build"
   },
   "bin": {
-    "dgs": "./src/cli/bin"
+    "dgs": "./dist/cli/bin.mjs"
   },
   "keywords": [],
   "author": "luthpg",
@@ -30,6 +45,8 @@
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.7.6",
     "jiti": "^2.3.3",
-    "unbuild": "^2.0.0"
-  }
+    "unbuild": "^2.0.0",
+    "vitest": "^2.1.3"
+  },
+  "packageManager": "pnpm@8.15.4+sha1.c85a4305534f76d461407b59277b954bac97b5c4"
 }
