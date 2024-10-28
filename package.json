@@ -1,5 +1,5 @@
 {
-  "name": "@cider/dgs",
+  "name": "@ciderjs/dgs",
   "version": "0.1.0",
   "description": "definitely type support for local development with Google Apps Script library",
   "main": "dist/cli/index.mjs",
