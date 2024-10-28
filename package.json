@@ -28,8 +28,8 @@
   "bin": {
     "dgs": "./dist/cli/bin.mjs"
   },
-  "keywords": [],
-  "author": "luthpg",
+  "keywords": ["GoogleAppsScript", "TypeScript", "library"],
+  "author": "luth",
   "license": "ISC",
   "dependencies": {
     "@google/clasp": "^2.4.2",
