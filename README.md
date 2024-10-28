@@ -1,4 +1,57 @@
-# Typed-GoogleAppsScript
+# Definitely-typed Library for GoogleAppsScript
+
+## Usage
+
+### Install
+
+```bash
+npm install dgs --save-dev
+```
+
+### Use Library `.d.ts` file in TypeScript files
+
+Add library types into global of your local ts files
+
+for server-side script:
+
+```ts: clasp-file.ts
+/// <reference types="dgs/dist/types/dayjs" />
+dayjs.dayjs('2024-01-01 12:23:34').add(1, 'D').format('YYYY/MM/DD HH:mm'); // '2024/01/02 12:23'
+```
+
+for client-side script:
+
+```tsx: react-file.tsx
+/// <reference types="dgs/dist/types/clientSideGoogle" />
+interface ResponseValue {
+  value: string;
+}
+export default function Home() {
+  const [responseValue, setResponseValue] = useState<ResponseValue | null>(null);
+  useEffect(() => {
+    google
+      .script
+      .run
+      .withSuccessHandler((response: string) => {
+        const responseValues = JSON.parse(response);
+      })
+      .useServerSideScript(parameters);
+  }, [google]);
+  return (<>
+    response is {responseValue.value}
+  </>);
+}
+```
+
+### Use cli tool what setup library in your `appsscript.json`
+
+You can install Apps Script libraries into your project via this cli tool.
+
+* This tool use `@google/clasp`, so you must setup clasp before use this.
+
+```bash
+npx dgs install
+```
 
 ## Roadmap
 
@@ -37,37 +90,4 @@ declare namespace GoogleAppsScript {
 }
 
 declare const LibraryName: typeof GoogleAppsScript.Libraries.LibraryName;
-```
-
-## Usage
-
-for server-side script:
-
-```ts: clasp-file.ts
-/// <reference types="typedGAS/dist/dayjs" />
-dayjs.dayjs('2024-01-01 12:23:34').add(1, 'D').format('YYYY/MM/DD HH:mm'); // '2024/01/02 12:23'
-```
-
-for client-side script:
-
-```tsx: react-file.tsx
-/// <reference types="typedGAS/dist/clientSideGoogle" />
-interface ResponseValue {
-  value: string;
-}
-export default function Home() {
-  const [responseValue, setResponseValue] = useState<ResponseValue | null>(null);
-  useEffect(() => {
-    google
-      .script
-      .run
-      .withSuccessHandler((response: string) => {
-        const responseValues = JSON.parse(response);
-      })
-      .useServerSideScript(parameters);
-  }, [google]);
-  return (<>
-    response is {responseValue.value}
-  </>);
-}
 ```
