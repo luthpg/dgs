@@ -1,5 +1,5 @@
 {
-  "name": "dgs",
+  "name": "@cider/dgs",
   "version": "0.1.0",
   "description": "definitely type support for local development with Google Apps Script library",
   "main": "dist/cli/index.mjs",
@@ -17,7 +17,6 @@
   },
   "scripts": {
     "build": "unbuild",
-    "prepack": "unbuild",
     "dgs": "jiti ./src/cli/bin",
     "lint": "biome lint --write src tests playgrounds",
     "format": "biome format --write src tests playgrounds",
@@ -26,10 +25,14 @@
     "prepare": "pnpm run fix && pnpm run test && pnpm run build"
   },
   "bin": {
-    "dgs": "./dist/cli/bin.mjs"
+    "dgs": "dist/cli/bin.mjs"
   },
-  "keywords": ["GoogleAppsScript", "TypeScript", "library"],
-  "author": "luth",
+  "keywords": [
+    "GoogleAppsScript",
+    "TypeScript",
+    "library"
+  ],
+  "author": "cider/luth",
   "license": "ISC",
   "dependencies": {
     "@google/clasp": "^2.4.2",
