@@ -30,9 +30,17 @@
   "keywords": [
     "GoogleAppsScript",
     "TypeScript",
-    "library"
+    "library",
+    "clasp"
   ],
-  "author": "cider/luth",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:luthpg/dgs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luthpg/dgs/issues"
+  },
+  "author": "ciderjs/luth",
   "license": "ISC",
   "dependencies": {
     "@google/clasp": "^2.4.2",
