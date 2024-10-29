@@ -19,7 +19,7 @@ declare namespace GoogleAppsScript {
             hash: string,
           ): void;
           /** Replaces the top event on the browser history stack with the provided state object, URL parameters and URL fragment. */
-          function replacer<T extends object, K extends object>(
+          function replace<T extends object, K extends object>(
             stateObject: T,
             params: K,
             hash: string,

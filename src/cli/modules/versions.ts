@@ -1,7 +1,8 @@
 import { execSync } from 'node:child_process';
+import { mkdir, rm, rmdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { mkdir, pathExists, rm, rmdir, writeFile } from 'fs-extra';
 import type { Library } from '../../libraries';
+import { pathExists } from './fsLib';
 
 export interface VersionInfo {
   userSymbol: string;

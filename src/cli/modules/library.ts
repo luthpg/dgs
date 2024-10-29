@@ -1,7 +1,8 @@
+import { readFile, writeFile } from 'node:fs/promises';
 import * as path from 'node:path';
 import { Separator, checkbox } from '@inquirer/prompts';
-import * as fs from 'fs-extra';
 import { LIBRARIES, type Library } from '../../libraries';
+import { pathExists } from './fsLib';
 import { getLibrariesVersions } from './versions';
 
 export interface AppsscriptJson {
@@ -45,11 +46,12 @@ export const getTargetLibraries = async () => {
 export const getClaspRootDir = async (): Promise<string> => {
   const claspPath = path.join(process.cwd(), '.clasp.json');
 
-  if (!(await fs.pathExists(claspPath))) {
+  if (!(await pathExists(claspPath))) {
     throw new Error('.clasp.json file not found in the project root.');
   }
 
-  const claspConfig = await fs.readJSON(claspPath);
+  const claspConfigJson = await readFile(claspPath, { encoding: 'utf-8' });
+  const claspConfig = JSON.parse(claspConfigJson);
   if (claspConfig.rootDir == null) {
     throw new Error('rootDir not found in .clasp.json');
   }
@@ -68,14 +70,16 @@ export async function pushLibrariesToAppsscriptJson(
       'appsscript.json',
     );
 
-    if (!(await fs.pathExists(appsscriptJsonPath))) {
+    if (!(await pathExists(appsscriptJsonPath))) {
       throw new Error(
         'appsscript.json file not found in the target directory.',
       );
     }
 
-    const appsscriptConfig: AppsscriptJson =
-      await fs.readJSON(appsscriptJsonPath);
+    const appsscriptConfigJson = await readFile(appsscriptJsonPath, {
+      encoding: 'utf-8',
+    });
+    const appsscriptConfig: AppsscriptJson = JSON.parse(appsscriptConfigJson);
 
     if (appsscriptConfig.dependencies == null) {
       appsscriptConfig.dependencies = { libraries: [] };
@@ -114,7 +118,8 @@ export async function pushLibrariesToAppsscriptJson(
       }
     }
 
-    await fs.writeJSON(appsscriptJsonPath, appsscriptConfig, { spaces: 2 });
+    const newJsonValue = JSON.stringify(appsscriptConfig, null, 2);
+    await writeFile(appsscriptJsonPath, newJsonValue);
     return appsscriptConfig;
   } catch (e) {
     console.error((e as Error).stack);
