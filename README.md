@@ -19,30 +19,6 @@ for server-side script:
 dayjs.dayjs('2024-01-01 12:23:34').add(1, 'D').format('YYYY/MM/DD HH:mm'); // '2024/01/02 12:23'
 ```
 
-for client-side script:
-
-```tsx: react-file.tsx
-/// <reference types="dgs/dist/types/clientSideGoogle" />
-interface ResponseValue {
-  value: string;
-}
-export default function Home() {
-  const [responseValue, setResponseValue] = useState<ResponseValue | null>(null);
-  useEffect(() => {
-    google
-      .script
-      .run
-      .withSuccessHandler((response: string) => {
-        const responseValues = JSON.parse(response);
-      })
-      .useServerSideScript(parameters);
-  }, [google]);
-  return (<>
-    response is {responseValue.value}
-  </>);
-}
-```
-
 ### Use cli tool what setup library in your `appsscript.json`
 
 You can install Apps Script libraries into your project via this cli tool.
